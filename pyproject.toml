@@ -1,0 +1,48 @@
+[tool.poetry]
+name = "python_template"
+version = "0.1.0"
+description = ""
+authors = ["i13abe <i13abemotoshi@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.dev-dependencies]
+pysen = {version = "^0.10.2", extras = ["lint"]}
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+# pysen version
+[tool.pysen]
+version = "0.10"
+
+# pysen lint 設定
+[tool.pysen.lint]
+enable_black = true
+enable_flake8 = true
+enable_isort = true
+enable_mypy = true
+mypy_preset = "entry"
+line_length = 100
+py_version = "py38"
+
+# mypy target設定
+[[tool.pysen.lint.mypy_targets]]
+  paths = ["."]
+
+# lint 対象path設定
+[tool.pysen.lint.source]
+includes = [
+  ".",
+]
+# 無視するフォルダー
+excludes = [
+  "./python_template/__init__.py",
+  "./python_template/"
+]
+
+# pytest設定
+[tool.pytest.ini_options]
+testpaths = ["tests"]

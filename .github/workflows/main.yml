@@ -1,0 +1,23 @@
+# python & lint for CI/CL
+name: check format and lint
+on: [pull_request]
+jobs:
+  pysen:
+    name: lint python code
+    runs-on: ubuntu-latest  # enviroment on linux ubuntu
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2 # checkout to PR branch
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2 # python 3.8 download on enviromnet
+        with:
+          python-version: 3.8 # python version
+      - name: Install Poetry
+        run: |
+          curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python  # poetryのインストール
+      - name: Add path for Poetry
+        run: echo "$HOME/.poetry/bin" >> $GITHUB_PATH # add poetry path to env
+      - name: Install Dependencies
+        run: poetry install --no-interaction  # install by poetry
+      - name: Run linter
+        run: make lint  # run lint
