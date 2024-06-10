@@ -1,11 +1,12 @@
 [tool.poetry]
-name = "python_template"
+name = "google home talk app"
 version = "0.1.0"
 description = ""
 authors = ["i13abe <i13abemotoshi@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+click = "8.0.2"
 
 [tool.poetry.dev-dependencies]
 pysen = {version = "^0.10.2", extras = ["lint"]}
