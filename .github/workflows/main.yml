@@ -14,7 +14,7 @@ jobs:
           python-version: 3.8 # python version
       - name: Install Poetry
         run: |
-          curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python  # poetryのインストール
+          curl -sSL https://install.python-poetry.org | python3 -  # poetryのインストール
       - name: Add path for Poetry
         run: echo "$HOME/.poetry/bin" >> $GITHUB_PATH # add poetry path to env
       - name: Install Dependencies
